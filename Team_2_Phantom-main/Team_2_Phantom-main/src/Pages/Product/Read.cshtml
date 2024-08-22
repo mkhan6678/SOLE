@@ -1,0 +1,48 @@
+﻿@page "{id}"
+@using ContosoCrafts.WebSite.Services
+@inject JsonFileProductService ProductService
+@model ContosoCrafts.WebSite.Pages.Product.ReadModel
+@using ContosoCrafts.WebSite.Pages
+
+@{
+    ViewData["Title"] = "Read page";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+    img {
+        width: 75 rem;
+        height: 50rem;
+        border-radius: 8px;
+        border: 1px solid #b11419;
+        padding: 5px;
+        width: 150px;
+    }
+</style>
+<h1>@Model.Product.Title</h1>
+
+<div class="content">
+
+    <p class="card-text"><b>Description : </b>@Model.Product.Description</p>
+
+    <p class="card-text"><b>Product Type : </b>@Model.Product.ProductType</p>
+
+    <p class="card-text"><b>Product Price : </b>$@Model.Product.Price</p>
+
+    <p class="card-text"><b>Seller Name : </b>@Model.Product.SellerName</p>
+
+    <p class="card-text"><b>Seller Email : </b>@Model.Product.SellerEmail</p>
+
+    <p class="card-text"><b>Seller Contact : </b>@Model.Product.SellerContact</p>
+
+    <p class="card-text"><b>Availability Status : </b>@Model.Product.AvailabilityStatus</p>
+
+    <img class="card-img-top" src='@Model.Product.Image' alt='Image for @Model.Product.Title'>
+
+</div>
+<div class="row">
+
+    <a asp-page="Update" asp-route-id="@Model.Product.Id" class="btn btn-primary" style="margin-top:20px;">Update <i class="fa fa-pencil-square-o"></i></a> &nbsp; &nbsp;
+    <a asp-page="Delete" asp-route-id="@Model.Product.Id" class="btn btn-primary" style="margin-top:20px;">Delete <i class="fa fa-trash-o"></i></a> &nbsp; &nbsp;
+</div>

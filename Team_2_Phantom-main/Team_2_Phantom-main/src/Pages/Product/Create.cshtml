@@ -1,0 +1,74 @@
+﻿@page
+
+@using ContosoCrafts.WebSite.Services
+@inject JsonFileProductService ProductService
+@model ContosoCrafts.WebSite.Pages.Product.CreateModel
+
+@{
+        ViewData["Title"] = "Create Page";
+}
+
+<div class="container">
+    <form method="post">
+
+        <input id="Product_Id" name="Product.Id" type="hidden" value="">
+
+        <div class="form-group">
+            <label class="control-label" for="Product_Title">Title</label>
+            <input class="form-control valid" type="text" data-val="true" data-val-length="The Title should have a length of more than 1 and less than 35" data-val-length-max="35" data-val-length-min="1" id="Product_Title" maxlength="35" name="Product.Title" aria-describedby="Product_Title-error" aria-invalid="false" required placeholder="Enter Title">
+            <span class="text-danger field-validation-valid" data-valmsg-for="Product.Title" data-valmsg-replace="true"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="Product_Description">Description</label>
+            <input class="form-control" type="text" id="Product_Description" name="Product.Description" required placeholder="Enter Description" maxlength="30">
+            <span class="text-danger field-validation-valid" data-valmsg-for="Product.Description" data-valmsg-replace="true"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="Product_Url">Url</label>
+            <input class="form-control" type="url" id="Product_Url" name="Product.Url" required placeholder="Enter Url">
+            <span class="text-danger field-validation-valid" data-valmsg-for="Product.Url" data-valmsg-replace="true"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="Product_Image">Image</label>
+            <input class="form-control" type="text" id="Product_Image" name="Product.Image" required placeholder="Enter Image Url">
+            <span class="text-danger field-validation-valid" data-valmsg-for="Product.Image" data-valmsg-replace="true"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="Product_Price">Price</label>
+            <input class="form-control" type="text" id="Seller_Price" name="Product.Price" required placeholder="Enter Price of Product">
+            <span class="text-danger field-validation-valid" data-valmsg-for="Product.Price" data-valmsg-replace="true"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="Product_SellerName">Seller Name</label>
+            <input class="form-control" type="text" id="Seller_Name" name="Product.SellerName" required placeholder="Enter Seller Name">
+            <span class="text-danger field-validation-valid" data-valmsg-for="Product.SellerName" data-valmsg-replace="true"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="Product_Description">Seller Email</label>
+            <input class="form-control" type="email" id="Product_SellerEmail" name="Product.SellerEmail" required placeholder="Enter Seller Email Id" maxlength="40" inputmode="email">
+            <span class="text-danger field-validation-valid" data-valmsg-for="Product.SellerEmail" data-valmsg-replace="true"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="Product_Description">Seller Contact</label>
+            <input class="form-control" id="Product_Sellercontact" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="Product.Sellercontact" required placeholder="Please Enter Seller Contact in <>-<>-<> format" maxlength="12">
+            <span class="text-danger" data-valmsg-replace="true"></span>
+        </div>
+
+        <br>
+        <hr>
+        <br>
+
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-primary">
+        </div>
+        <input name="__RequestVerificationToken" type="hidden" value="">
+    </form>
+
+</div>

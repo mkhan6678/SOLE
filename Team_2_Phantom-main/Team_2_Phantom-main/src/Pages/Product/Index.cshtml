@@ -1,0 +1,30 @@
+﻿@page
+@model ContosoCrafts.WebSite.Pages.Product.IndexModel
+@{
+    ViewData["Title"] = "Index page";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="container">
+    <a asp-page="/Product/Create" class="btn btn-primary" style="margin-bottom:20px;">Add Product <i class="fa fa-cart-plus"></i></a>
+    <br />
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Action</th>
+                <th>Product Availability</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model.Products)
+            {
+                <tr>
+                    <td><b>@product.Title</b></td>
+                    <td><a asp-page="Read" asp-route-id="@product.Id" class="btn btn-outline-danger">Info <i class="fa fa-info-circle"></i></a></td>
+                    <td class="@(product.AvailabilityStatus == "Available" ? "green" : "red")">@product.AvailabilityStatus</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

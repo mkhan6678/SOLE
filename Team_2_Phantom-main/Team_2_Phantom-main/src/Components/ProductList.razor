@@ -1,0 +1,64 @@
+@using ContosoCrafts.WebSite.Models
+@using ContosoCrafts.WebSite.Services
+@using Microsoft.AspNetCore.Components.Web
+@inject JsonFileProductService ProductService
+
+
+<div class="card-columns">
+
+    @{
+
+        // Get only the products that are of this enum type
+        var productListGroup = ProductService.GetProducts();
+
+        // Order the list alphabetical
+        productListGroup = Products.OrderBy(m => m.Title);
+
+        if (productListGroup.Any())
+        {
+            @foreach (var Product in productListGroup)
+            {
+                // Card code Start //
+                <div class="card">
+                    <div class="face face1">
+                        <div class="content">
+                            <center> <h5>   @Product.Title  </h5> </center>
+                            @Product.Description <br />
+                            Seller Name : @Product.SellerName <br />
+                            Seller Contact: @Product.SellerContact <br />
+                            Status : @Product.AvailabilityStatus <br />
+                        </div>
+                    </div>
+                    <div class="face face2" style="background-image: url('@Product.Image');">
+
+                        <h4>@Product.Title $@Product.Price </h4>
+                    </div>
+                </div>
+                // Card code end//
+            }
+        }
+
+    }
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+@code
+{
+    //Create a variable for selected product
+    ProductModel selectedProduct;
+
+
+
+    //Create a variable for selected product ID
+    string selectedProductId;
+
+
+
+    //Create a parameter for razor page
+    [Parameter]
+    public IEnumerable<ProductModel> Products { get; set; }
+
+
+
+}
